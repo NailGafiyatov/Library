@@ -1,6 +1,5 @@
 package com.Nail.Library.models;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -14,21 +13,21 @@ public class Person {
     private String name;
 
     @Min(value = 0, message = "Age should be greater than 0")
-    private int age;
+    private int yearOfBirthday;
 
-    @NotEmpty(message = "Email should not be empty")
-    @Email(message = "Email should be valid")
-    private String email;
+//    @NotEmpty(message = "Email should not be empty")
+//    @Email(message = "Email should be valid")
+//    private String email;
 
     public Person() {
 
     }
 
-    public Person(int id, String name, int age, String email) {
+    public Person(int id, String name, int yearOfBirthday) {
         this.id = id;
         this.name = name;
-        this.age = age;
-        this.email = email;
+        this.yearOfBirthday = yearOfBirthday;
+//        this.email = email;
     }
 
     public int getId() {
@@ -47,19 +46,19 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getYearOfBirthday() {
+        return yearOfBirthday;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setYearOfBirthday(int yearOfBirthday) {
+        this.yearOfBirthday = yearOfBirthday;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 }
