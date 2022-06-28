@@ -25,12 +25,6 @@ public class PersonDAO {
         return jdbcTemplate.query("SELECT * FROM Person", new BeanPropertyRowMapper<>(Person.class));
     }
 
-    public Optional<Person> show(String name) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE name=?",
-                new Object[]{name},
-                new BeanPropertyRowMapper<>(Person.class)).stream().findAny();
-    }
-
     public Person show(int id) {
         return jdbcTemplate.query("SELECT * FROM Person WHERE id=?",
                         new Object[]{id},
@@ -39,7 +33,7 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        jdbcTemplate.update("INSERT INTO Person VALUES(?, ?, ?)", person.getId(), person.getName(), person.getYearOfBirthday());
+        jdbcTemplate.update("INSERT INTO Person(ФИО, год_рождения) VALUES(?, ?)", person.getName(), person.getYearOfBirthday());
     }
 
     public void update(int id, Person updatedPerson) {
@@ -49,5 +43,11 @@ public class PersonDAO {
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Person WHERE id=?", id);
+    }
+
+    // Для валидации ФИО
+    public Optional<Person> getPersonByFullName(String fullName) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE ФИО=?", new Object[]{fullName},
+                new BeanPropertyRowMapper<>(Person.class)).stream().findAny();
     }
 }

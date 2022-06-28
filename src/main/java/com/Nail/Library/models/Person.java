@@ -8,26 +8,20 @@ import javax.validation.constraints.Size;
 public class Person {
     private int id;
 
-    @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2, max = 30, message = "В ФИО должно быть от 2 до 30 символов.")
     private String name;
 
-    @Min(value = 0, message = "Age should be greater than 0")
+    @Min(value = 1900, message = "Год рождения должен быть не ранее 1900 и не позже 2022.")
     private int yearOfBirthday;
-
-//    @NotEmpty(message = "Email should not be empty")
-//    @Email(message = "Email should be valid")
-//    private String email;
 
     public Person() {
 
     }
 
-    public Person(int id, String name, int yearOfBirthday) {
-        this.id = id;
+    public Person(String name, int yearOfBirthday) {
         this.name = name;
         this.yearOfBirthday = yearOfBirthday;
-//        this.email = email;
     }
 
     public int getId() {
@@ -53,12 +47,4 @@ public class Person {
     public void setYearOfBirthday(int yearOfBirthday) {
         this.yearOfBirthday = yearOfBirthday;
     }
-
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
 }

@@ -22,15 +22,14 @@ public class PersonValidator implements Validator {
         return Person.class.equals(aClass);
     }
 
+    //смотрим, есть ли человек с такими же ФИО в БД
     @Override
     public void validate(Object o, Errors errors) {
         Person person = (Person) o;
 
-        if (personDAO.show(person.getName()).isPresent()) {
-            errors.rejectValue("name", "", "This name is already taken");
+        if (personDAO.getPersonByFullName(person.getName()).isPresent()) {
+            errors.rejectValue("ФИО", "", "Человек с такими ФИО уже существует.");
         }
-        //смотрим, есть ли человек с такими же ФИО в БД
 
-        if (!Character.isUpperCase(person.getName().codePointAt(0)))errors.rejectValue("name", "", "Name chould start with a capital letter");
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update person</title>
+    <title>Обновить данные пользователя</title>
 </head>
 <body>
 
@@ -15,11 +15,8 @@
     <input type="text" th:field="*{yearOfBirthday}" id="yearOfBirthday"/>
     <div style="color:red" th:if="${#fields.hasErrors('yearOfBirthday')}" th:errors="*{yearOfBirthday}">Год рождения ошибка</div>
     <br/>
-<!--    <label for="email">Enter email: </label>-->
-<!--    <input type="text" th:field="*{email}" id="email"/>-->
-<!--    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>-->
-<!--    <br/>-->
-    <input type="submit" value="Update!"/>
+
+    <input type="submit" value="Обновить!"/>
 </form>
 
 </body>

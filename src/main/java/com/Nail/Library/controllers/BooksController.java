@@ -13,12 +13,12 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/books")
-public class BookController {
+public class BooksController {
 
     private final BookDAO bookDAO;
 
     @Autowired
-    public BookController(BookDAO bookDAO) {
+    public BooksController(BookDAO bookDAO) {
         this.bookDAO = bookDAO;
     }
 
