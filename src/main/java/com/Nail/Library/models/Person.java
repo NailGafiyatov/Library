@@ -12,9 +12,10 @@ public class Person {
     @Size(min = 2, max = 30, message = "ФИО должно содержать от 2 до 30 символов")
     private String fullName;
 
-    @Min(value = 0, message = "Год рожжения должен быть не ранее 1900 и не позже 2022 ")
+    @Min(value = 1900, message = "Год рождения должен быть не ранее 1900 и не позже 2022 ")
     private int yearOfBirthday;
 
+    //Пустой конструктор для Спринга
     public Person() {
 
     }

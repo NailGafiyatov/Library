@@ -2,6 +2,7 @@ package com.Nail.Library.controllers;
 
 import com.Nail.Library.dao.PersonDAO;
 import com.Nail.Library.models.Person;
+import com.Nail.Library.util.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,12 @@ import javax.validation.Valid;
 public class PeopleController {
 
     private final PersonDAO personDAO;
+    private final PersonValidator personValidator;
 
     @Autowired
-    public PeopleController(PersonDAO personDAO) {
+    public PeopleController(PersonDAO personDAO, PersonValidator personValidator) {
         this.personDAO = personDAO;
+        this.personValidator = personValidator;
     }
 
     @GetMapping()
@@ -31,6 +34,7 @@ public class PeopleController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.show(id));
+        model.addAttribute("books", personDAO.getBooksByPersonId(id));
         return "people/show";
     }
 
